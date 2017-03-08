@@ -1,5 +1,17 @@
 Revision history for Variable-Magic
 
+0.61    2017-01-24 15:30 UTC
+        + Fix : [RT #115792] : Latest blead stack unwind work causes infloop
+                in a test.
+                A change in how the core frees temporary values after eval
+                interacted badly with Variable::Magic and caused infinite loops
+                when a free callback was attached to a wizard. This change was
+                temporarily reverted, but is going to be reinstated, and
+                Variable::Magic is now able to play nicely when this happens.
+                Thanks Peter Rabbitson for reporting and David Mitchell for
+                providing a fix.
+
+
 0.60    2016-09-06 22:30 UTC
         + Chg : A large chunk of boilerplate XS code, which is also used in
                 other XS modules, has been factored out of the main .xs file
