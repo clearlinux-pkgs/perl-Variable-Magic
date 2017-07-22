@@ -4,7 +4,7 @@
 #
 Name     : perl-Variable-Magic
 Version  : 0.61
-Release  : 4
+Release  : 5
 URL      : http://search.cpan.org/CPAN/authors/id/V/VP/VPIT/Variable-Magic-0.61.tar.gz
 Source0  : http://search.cpan.org/CPAN/authors/id/V/VP/VPIT/Variable-Magic-0.61.tar.gz
 Summary  : 'Associate user-defined magic to variables from Perl.'
@@ -39,6 +39,9 @@ lib components for the perl-Variable-Magic package.
 %setup -q -n Variable-Magic-0.61
 
 %build
+export http_proxy=http://127.0.0.1:9/
+export https_proxy=http://127.0.0.1:9/
+export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
 if test -f Makefile.PL; then
 %{__perl} Makefile.PL
@@ -52,7 +55,7 @@ fi
 export LANG=C
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
-export no_proxy=localhost
+export no_proxy=localhost,127.0.0.1,0.0.0.0
 make TEST_VERBOSE=1 test
 
 %install
@@ -69,7 +72,7 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/site_perl/5.24.0/x86_64-linux-thread-multi/Variable/Magic.pm
+/usr/lib/perl5/site_perl/5.26.0/x86_64-linux-thread-multi/Variable/Magic.pm
 
 %files doc
 %defattr(-,root,root,-)
@@ -77,4 +80,4 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib/perl5/site_perl/5.24.0/x86_64-linux-thread-multi/auto/Variable/Magic/Magic.so
+/usr/lib/perl5/site_perl/5.26.0/x86_64-linux-thread-multi/auto/Variable/Magic/Magic.so
