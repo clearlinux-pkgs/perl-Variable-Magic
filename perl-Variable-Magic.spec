@@ -4,7 +4,7 @@
 #
 Name     : perl-Variable-Magic
 Version  : 0.61
-Release  : 6
+Release  : 7
 URL      : http://search.cpan.org/CPAN/authors/id/V/VP/VPIT/Variable-Magic-0.61.tar.gz
 Source0  : http://search.cpan.org/CPAN/authors/id/V/VP/VPIT/Variable-Magic-0.61.tar.gz
 Summary  : 'Associate user-defined magic to variables from Perl.'
@@ -72,7 +72,7 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/site_perl/5.26.0/x86_64-linux-thread-multi/Variable/Magic.pm
+/usr/lib/perl5/site_perl/5.26.1/x86_64-linux-thread-multi/Variable/Magic.pm
 
 %files doc
 %defattr(-,root,root,-)
@@ -80,4 +80,4 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib/perl5/site_perl/5.26.0/x86_64-linux-thread-multi/auto/Variable/Magic/Magic.so
+/usr/lib/perl5/site_perl/5.26.1/x86_64-linux-thread-multi/auto/Variable/Magic/Magic.so
