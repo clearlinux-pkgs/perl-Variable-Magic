@@ -4,14 +4,14 @@
 #
 Name     : perl-Variable-Magic
 Version  : 0.62
-Release  : 12
+Release  : 13
 URL      : https://cpan.metacpan.org/authors/id/V/VP/VPIT/Variable-Magic-0.62.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/V/VP/VPIT/Variable-Magic-0.62.tar.gz
 Summary  : 'Associate user-defined magic to variables from Perl.'
 Group    : Development/Tools
 License  : Artistic-1.0-Perl
-Requires: perl-Variable-Magic-lib
-Requires: perl-Variable-Magic-man
+Requires: perl-Variable-Magic-lib = %{version}-%{release}
+BuildRequires : buildreq-cpan
 
 %description
 NAME
@@ -19,20 +19,22 @@ Variable::Magic - Associate user-defined magic to variables from Perl.
 VERSION
 Version 0.62
 
+%package dev
+Summary: dev components for the perl-Variable-Magic package.
+Group: Development
+Requires: perl-Variable-Magic-lib = %{version}-%{release}
+Provides: perl-Variable-Magic-devel = %{version}-%{release}
+
+%description dev
+dev components for the perl-Variable-Magic package.
+
+
 %package lib
 Summary: lib components for the perl-Variable-Magic package.
 Group: Libraries
 
 %description lib
 lib components for the perl-Variable-Magic package.
-
-
-%package man
-Summary: man components for the perl-Variable-Magic package.
-Group: Default
-
-%description man
-man components for the perl-Variable-Magic package.
 
 
 %prep
@@ -61,9 +63,9 @@ make TEST_VERBOSE=1 test
 %install
 rm -rf %{buildroot}
 if test -f Makefile.PL; then
-make pure_install PERL_INSTALL_ROOT=%{buildroot}
+make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
-./Build install --installdirs=site --destdir=%{buildroot}
+./Build install --installdirs=vendor --destdir=%{buildroot}
 fi
 find %{buildroot} -type f -name .packlist -exec rm -f {} ';'
 find %{buildroot} -depth -type d -exec rmdir {} 2>/dev/null ';'
@@ -72,12 +74,12 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/site_perl/5.26.1/x86_64-linux-thread-multi/Variable/Magic.pm
+/usr/lib/perl5/vendor_perl/5.26.1/x86_64-linux-thread-multi/Variable/Magic.pm
+
+%files dev
+%defattr(-,root,root,-)
+/usr/share/man/man3/Variable::Magic.3
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib/perl5/site_perl/5.26.1/x86_64-linux-thread-multi/auto/Variable/Magic/Magic.so
-
-%files man
-%defattr(-,root,root,-)
-/usr/share/man/man3/Variable::Magic.3
+/usr/lib/perl5/vendor_perl/5.26.1/x86_64-linux-thread-multi/auto/Variable/Magic/Magic.so
