@@ -4,7 +4,7 @@
 #
 Name     : perl-Variable-Magic
 Version  : 0.63
-Release  : 33
+Release  : 34
 URL      : https://cpan.metacpan.org/authors/id/V/VP/VPIT/Variable-Magic-0.63.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/V/VP/VPIT/Variable-Magic-0.63.tar.gz
 Summary  : 'Associate user-defined magic to variables from Perl.'
